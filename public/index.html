@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="cache-control" content="no-cache">
+ <title>Video List - Backbone and RequireJS</title>
+ <link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/bootstrap.css">
+ 
+</head>
+<body>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a href="index.html" class="brand">Home</a>
+			<ul class="nav">
+				<li><a href="/#showMovieForm" class="menu" id="buttonIndex">Agregar Pelicula</a></li>
+				<li><a href="/#listMovies" class="menu" id="buttonListMovies">Listar 	Peliculas</a></li>
+			</ul>
+		</div>
+	</div>
+	<h1>Movie List!</h1>
+	
+	<div id="movieList" ></div>
+
+	<script data-main="app/main" src="app/vendor/require.js"></script>
+</body>
+</html>

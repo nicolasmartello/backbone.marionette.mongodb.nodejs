@@ -1,0 +1,48 @@
+<div id="formContainer" class="form" tabindex="-1" >
+
+<form class="form-horizontal" id="movies" action="">
+	<input type="hidden" class="data" id="id" name="id" value="<%= id %>" required  >
+	<div class="control-group">
+		<label class="control-label">Título:</label>
+		<div class="controls">
+			<input class="data" type="text" id="title" name="title" value="<%= title %>" required  >
+		</div>	
+	</div>
+	<div class="control-group">
+		<label class="control-label">Genero:</label>
+		<div class="controls">	
+			<input class="data" type="text" id="genre" name="genre" value="<%= genre %>" required>
+		</div>
+	</div> 	
+	<div class="control-group">
+		<label class="control-label">Duración:</label>
+		<div class="controls">
+			<input class="data" type="text" id="duration" name="duration" value="<%= duration %>" required>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">Sinopsis</label>
+		<div class="controls">
+			<textarea class="data" type="text" id="sinopsis" name="sinopsis" required><%= sinopsis %></textarea>
+		</div>
+	</div>
+	
+	<!--<a href="/#addMovie" class="button submit">agregar</a>
+	<a href="/#listMovies" class="button cancel">cancelar</a>-->
+	<button type="button" class="btn btn btn-primary submit">Agregar</button>
+	<button type="button" class="btn btn btn-primary button cancel">Cancelar</button>
+
+</form>
+
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3>Atención!</h3>
+    </div>
+  <div class="modal-body">
+      <p id="message-text">
+      </p>
+  </div>
+</div>
