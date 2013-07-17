@@ -57,7 +57,7 @@ define(['jquery',
 
                 this.formView.render();
 
-                $('#titleModal').html('Creando película');
+                $('#titleModal').html('nueva película');
 
                 $('#myModal').modal('show');
 
