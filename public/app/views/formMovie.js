@@ -7,7 +7,7 @@ define( [
 
     	var FormMovieView = Backbone.View.extend({  
         
-          el:$('#movieList'),
+          el:$('#modalView'),
 
           events:{
 
@@ -37,9 +37,10 @@ define( [
             },
 
 
-            cancelMovie: function () {     
-
-              this.$el.find('#formContainer').remove();
+            cancelMovie: function () {
+              $('#myModal').modal('hide');
+              window.history.back();
+              $('.data').val('');
 
             },
 
@@ -49,10 +50,6 @@ define( [
               
               $('.data').val('');
             
-            },
-            openMessage: function (msg){
-              $('#message-text').html(msg);
-              $('#myModal').modal('show');
             }
 
       });    

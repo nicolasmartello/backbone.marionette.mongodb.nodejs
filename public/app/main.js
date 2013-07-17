@@ -1,12 +1,10 @@
 require.config({
   baseUrl: "app",
   paths: {    
-   jquery: 'vendor/jquery.min',
+    jquery: 'vendor/jquery.min',
     underscore: 'vendor/underscore',
     backbone: 'vendor/backbone-min',
-    localstorage: "vendor/backbone.localStorage-min",
     bootstrap: 'vendor/bootstrap',
-   
   },
    shim: {
         backbone: {

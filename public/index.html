@@ -3,24 +3,63 @@
 <head>
  <meta charset="UTF-8">
  <meta http-equiv="cache-control" content="no-cache">
- <title>Video List - Backbone and RequireJS</title>
+ <title>AppMovie</title>
  <link rel="stylesheet" href="css/style.css">
  <link rel="stylesheet" href="css/bootstrap.css">
  
 </head>
 <body>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<a href="index.html" class="brand">Home</a>
-			<ul class="nav">
-				<li><a href="/#showMovieForm" class="menu" id="buttonIndex">Agregar Pelicula</a></li>
-				<li><a href="/#listMovies" class="menu" id="buttonListMovies">Listar 	Peliculas</a></li>
-			</ul>
+
+<div class="head-nav-app">
+	<a href="index.html" >Home</a>
+</div>
+
+<div>
+
+	<div class="bs-docs-example" style="float:left; max-width: 340px;">
+		<div class="well" style=" padding: 8px 0;">
+		  <ul class="nav nav-list">
+		    <li class="nav-header">Películas</li>
+		    <li ><!--class="active" -->
+		    	<a href="/#showMovieForm">Agregar Pelicula</a>
+		    </li>
+		    <li>
+		    	<a href="/#listMovies">Listar Peliculas</a>
+		    </li>
+		    <li class="nav-header">Clientes</li>
+		    <li ><!--class="active"-->
+		    <a href="">Agregar Cliente</a>
+		    </li>
+		    <li>
+		    	<a href="">Listar Clientes</a>
+		    </li>
+		    <li class="divider"></li>
+		    <li><input class="data" type="text" id="search" name="search" value="" placeholder="buscar película"></li>
+		  </ul>
+		</div> 
 		</div>
-	</div>
-	<h1>Movie List!</h1>
-	
-	<div id="movieList" ></div>
+
+		<div class="mainBody">
+			<div id="movieList" class="well"  ></div>
+		</div>
+		
+
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		    <div class="modal-header">
+		       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		      <h3 id="titleModal"></h3>
+		    </div>
+		    <div class="bs-docs-example">
+	        <div id="msg-error" class="alert alert-error hide">
+	              <button type="button" class="close" data-dismiss="alert">×</button>
+	             <p ></p>
+	        </div>
+          </div>
+		  <div id="modalView" class="modal-body">
+		  </div>
+			  
+		</div>
+</div>
 
 	<script data-main="app/main" src="app/vendor/require.js"></script>
 </body>

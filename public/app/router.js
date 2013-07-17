@@ -1,9 +1,7 @@
 define(['jquery', 
 	    'underscore', 
 	    'backbone',
-	    'views/mainView',
-	    'collections/movies',
-	    'models/movie',
+	    'views/mainView'
 ], function( $, _, Backbone, MainView ){
 
 	var AppRouter = Backbone.Router.extend({

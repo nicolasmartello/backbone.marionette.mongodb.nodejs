@@ -49,6 +49,22 @@ define(['jquery',
             
             },
 
+            ShowFormView: function (){
+                
+                this.formView.collectionMovies = listMovies;
+
+                this.formView.modelMovie = new ModelMovie;  
+
+                this.formView.render();
+
+                $('#titleModal').html('Creando película');
+
+                $('#myModal').modal('show');
+
+                $('#formContainer').find('input[type=text]').filter(':first').focus();
+
+            },
+
             EditMovie: function (id) {
                 var movieSelect = listMovies.get(id);   
 
@@ -56,7 +72,11 @@ define(['jquery',
                     this.formView.modelMovie = movieSelect;
                 
                     this.formView.render();
+                     
+                    $('#titleModal').html('editando película');
                     
+                    $('#myModal').modal('show');
+
                     $('#formContainer .cancel').html('finalizar');
                     
                     $('#formContainer').find('input[type=text]').filter(':first').focus();    
@@ -83,17 +103,7 @@ define(['jquery',
 
             },
 
-            ShowFormView: function (){
-                
-                this.formView.collectionMovies = listMovies;
-
-                this.formView.modelMovie = new ModelMovie;  
-
-                this.formView.render();
-                
-                $('#formContainer').find('input[type=text]').filter(':first').focus();
-
-            },
+            
 
             ShowListView: function (){
                 var that = this;

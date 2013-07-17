@@ -1,8 +1,19 @@
-body{
-	margin: 0 0 0 0;
-	background-color: grey;
-	color: #777;
-	font-family:Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif;
+.head-nav-app{
+	background: #b94a48;
+	padding:5px 0 3px 15px;
+	margin-bottom: 12px;
+}
+.head-nav-app a{
+	font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+	font-size: 15px;
+	color: #efefef;
+}
+
+.mainBody{
+	margin-top: -5px;
+	padding: 7px;
+	width: 75%;
+	float: right;
 }
 
 h1{

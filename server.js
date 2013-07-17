@@ -28,9 +28,6 @@ app.configure( function() {
 // insert
 app.put('/movie', appRoute.AddMovie);
 
-// update
-app.post('/editMovie', appRoute.EditMovie);
-
 app.get('/listMovies', appRoute.GetListMovies);
 
 //delete Movie

@@ -1,6 +1,6 @@
 var mongoose = require( 'mongoose' );
 
-mongoose.connect('mongodb://localhost/gmnm');
+mongoose.connect('mongodb://localhost/moviesdb');
 
 var Schema = mongoose.Schema;
 
@@ -51,41 +51,6 @@ exports.AddMovie = function (req, res) {
 
 };
 
-
-// update
-exports.EditMovie = function (req, res) {
-
-  Movie.findById(req.body.id, function (err, doc) {
-
-    if (!err) {
-
-      for (var i in req.body) {
-
-        if (i !== '_id') {
-          doc[i] = req.body[i];
-        }
-      }
-
-      doc.save(function (err, doc) {
-
-        if (!err) {
-
-          res.send(doc);
-        }
-        else {
-
-          res.send('{"success":false}');
-        }
-      });
-    }
-    else {
-
-      res.send('{"success":false}');
-    }
-  
-  });
-
-};
 
 exports.GetListMovies = function ( req, res) {
 

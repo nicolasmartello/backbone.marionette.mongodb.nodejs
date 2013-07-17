@@ -34,8 +34,8 @@ define([
 			initialize: function () {
 				
 				this.on("invalid", function(modelo, error){
-					$('#message-text').html(error);
-        			$('#myModal').modal('show');
+					$('#msg-error p').html(error);
+        			$('#msg-error').show();
 				});
 			
 				
