@@ -1,29 +1,12 @@
-define(['jquery', 
-        'underscore', 
-        'backbone',
-        'views/mainView',
+define(['views/mainView',
         'collections/movies',
         'models/movie',
         'views/formMovie',
         'views/listMovies',
-        ],function($, _, Backbone, MainView, CollectionMovies, ModelMovie, 
+        ],function(MainView, CollectionMovies, ModelMovie, 
                    FormView, ListView){
 
-    $.fn.serializeObject = function() {
-          var jsonReturn = {};
-          var domArray = this.serializeArray();
-          $.each(domArray, function() {
-              if (jsonReturn[this.name] !== undefined) {
-                  if (!jsonReturn[this.name].push) {
-                      jsonReturn[this.name] = [jsonReturn[this.name]];
-                  }
-                  jsonReturn[this.name].push(this.value || '');
-              } else {
-                  jsonReturn[this.name] = this.value || '';
-              }
-          });
-          return jsonReturn;
-    };        
+           
 
 
     var listMovies = new CollectionMovies;
@@ -125,6 +108,23 @@ define(['jquery',
             },
 
     });
+    
+
+    $.fn.serializeObject = function() {
+          var jsonReturn = {};
+          var domArray = this.serializeArray();
+          $.each(domArray, function() {
+              if (jsonReturn[this.name] !== undefined) {
+                  if (!jsonReturn[this.name].push) {
+                      jsonReturn[this.name] = [jsonReturn[this.name]];
+                  }
+                  jsonReturn[this.name].push(this.value || '');
+              } else {
+                  jsonReturn[this.name] = this.value || '';
+              }
+          });
+          return jsonReturn;
+    }; 
 
     return MainView;
 

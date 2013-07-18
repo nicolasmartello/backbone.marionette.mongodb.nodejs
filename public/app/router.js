@@ -1,8 +1,4 @@
-define(['jquery', 
-	    'underscore', 
-	    'backbone',
-	    'views/mainView'
-], function( $, _, Backbone, MainView ){
+define(['views/mainView'], function( MainView ){
 
 	var AppRouter = Backbone.Router.extend({
 		
@@ -20,7 +16,7 @@ define(['jquery',
 	var initialize = function(){
 		
 		var app_router = new AppRouter,
-		mainView = new MainView;
+			mainView = new MainView;
 		
 		app_router.on('route:showlistMovies',function(page){
 			

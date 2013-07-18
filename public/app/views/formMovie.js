@@ -1,9 +1,6 @@
-define( [
-	'jquery',
-  'underscore',
-  'backbone',
-  'text!templates/formMovie.html',
-	], function( $, _, Backbone,  Template) {
+define( ['backbone',
+         'text!templates/formMovie.html'
+	], function( Backbone,  Template) {
 
     	var FormMovieView = Backbone.View.extend({  
         
