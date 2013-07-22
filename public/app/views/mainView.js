@@ -6,12 +6,9 @@ define(['views/mainView',
         ],function(MainView, CollectionMovies, ModelMovie, 
                    FormView, ListView){
 
-           
-
-
-    var listMovies = new CollectionMovies;
-
-    var MainView = Backbone.View.extend({
+          var listMovies = new CollectionMovies;       
+  /*
+    var MainView = Backb  one.View.extend({
             
             el:$('#movieList'),
 
@@ -89,25 +86,12 @@ define(['views/mainView',
             
 
             ShowListView: function (){
-                var that = this;
                 
-                listMovies.fetch({
-                   
-                    success: function(){
-                        
-                        listMovies.models = arguments[1];
-                        that.listView.items = listMovies.models;
-                        that.$el.html(that.listView.render().$el);         
-                    },
-                    error:function () {
-                        console.log(arguments);
-                    }
-                });
                 
                 
             },
 
-    });
+    });*/
     
 
     $.fn.serializeObject = function() {
@@ -124,8 +108,72 @@ define(['views/mainView',
               }
           });
           return jsonReturn;
-    }; 
+    };
 
-    return MainView;
+    return {
+
+      showlistMovies: function(page){
+      
+        App.mainRegion.show( fuction () {
+
+            var that = this;
+              
+            listMovies.fetch({
+               
+                success: function(){
+                    
+                    listMovies.models = arguments[1];
+                    that.listView.items = listMovies.models;
+                    that.$el.html(that.listView.render().$el);         
+                
+                },
+                error:function () {
+                    console.log(arguments);
+                }
+            });
+
+        });         
+      
+      },
+
+      showForm: function(){
+      
+        App.modalRegion.show( mainView.showForm() );     
+      
+      },
+
+      editMovie: function (id){
+      
+          App.modalRegion.show( function (id) {
+                var movieSelect = listMovies.get(id);   
+
+                if( movieSelect ){
+                    this.formView.modelMovie = movieSelect;
+                
+                    this.formView.render();
+                     
+                    $('#titleModal').html('editando película');
+                    
+                    $('#myModal').modal('show');
+
+                    $('#formContainer .cancel').html('finalizar');
+                    
+                    $('#formContainer').find('input[type=text]').filter(':first').focus();    
+                
+                }else{
+                    console.log('no se pudo encontrar la película seleccionada id:',id);
+                }
+                
+            });
+      
+      },
+
+      deleteMovie: function (id) {
+        
+        mainView.DeleteMovie(id);
+      
+      },
+
+    }
 
 });

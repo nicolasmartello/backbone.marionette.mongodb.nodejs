@@ -1,62 +1,17 @@
-define(['views/mainView'], function( MainView ){
-
-	var AppRouter = Backbone.Router.extend({
+define(['views/mainView'], 
+	function( MainView ){
 		
-		routes: {
-			"listMovies" : "showlistMovies",
-			"listMovies/page/:page" : "showlistMovies",
-			"showMovieForm"	 : "showForm", //para que muestre el form
-			"delete/:id" : "deleteMovie",//elimina desde la coleccion				
-			"edit/:id"	 : "editMovie", 	
-			"*actions"   : "defaultAction",	
-		},
-
-	}); 		
-
-	var initialize = function(){
-		
-		var app_router = new AppRouter,
-			mainView = new MainView;
-		
-		app_router.on('route:showlistMovies',function(page){
+		return Marionette.AppRouter.extend({
 			
-			mainView.ShowListView(page);        	
+			routes: {
+				"listMovies" : "showlistMovies",
+				//"listMovies/page/:page" : "showlistMovies",
+				"showMovieForm"	 : "showForm",
+				"delete/:id" : "deleteMovie",
+				"edit/:id"	 : "editMovie"	
+			},
+
+			controller: MainView,
 			
 		});
-		
-		app_router.on('route:showForm', function () {
-		   	
-			mainView.ShowFormView();		
-
-		});		
-		
-		app_router.on( 'route:deleteMovie', function (id) {
-			
-			mainView.DeleteMovie(id);
-		
-		});
-
-		app_router.on( 'route:editMovie', function (id) { 
-
-			mainView.EditMovie(id);
-		
-		});
-
-		app_router.on( 'route:defaultAction', function( actions ){		
-			
-			mainView.render();
-			
-		});
-
-        Backbone.history.start();
-       
-	};
-	
-
-	return {
-	
-		initialize: initialize
-			
-	};
-
 });

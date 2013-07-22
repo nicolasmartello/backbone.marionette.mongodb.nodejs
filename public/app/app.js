@@ -1,15 +1,26 @@
-define([ 'router' ], function( Router){
+define ([ 'marionette', 'router' ], 
+		function ( Marionette, Router ) {
 
-  var initialize = function(){
+  var App = new Marionette.Application();
 
-    Router.initialize();
+  App.addRegions({
 
-  };
+  	regions: {
 
-  return { 
+  		modalRegion: '#modalRegion',
+  	
+  		mainRegion: '#mainRegion'
+  	
+  	}
 
-    initialize: initialize
-    
-  };
+  });
+
+  App.addInitializer(function (options) {
+  	console.log('app ', App);
+  	new Router();
+
+  });
+  
+  return App;
 
 });
