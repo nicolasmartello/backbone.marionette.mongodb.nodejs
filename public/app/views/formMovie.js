@@ -1,25 +1,19 @@
-define( ['backbone',
-         'text!templates/formMovie.html'
-	], function( Backbone,  Template) {
+define( ['marionette',
+         'text!templates/formMovie.html',
+         'models/movie'
+	], function( Marionette,  Template, Movie) {
+    
+      var modelMovie = new Movie;
 
-    	var FormMovieView = Backbone.View.extend({  
-        
-          el:$('#modalView'),
-
-          events:{
+    	var FormMovieView = Marionette.ItemView.extend({
+          collectionEvents:{
 
             'click .submit' : 'addMovie',
             'click .cancel' : 'cancelMovie'
 
           },
           
-          render: function() {
-                       
-            this.$el.html( _.template( Template, this.modelMovie.attributes ) ); 
-           
-            return this;
-          
-          },
+          template:  _.template( Template, modelMovie.attributes ),
 
           addMovie: function () {
                 
@@ -27,9 +21,9 @@ define( ['backbone',
                 
                 var attrs = formDom.serializeObject();
                       
-                this.modelMovie.set(attrs);
+                modelMovie.set(attrs);
 
-                this.modelMovie.save(); 
+                modelMovie.save(); 
                 
             },
 

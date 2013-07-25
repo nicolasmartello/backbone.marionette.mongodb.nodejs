@@ -1,17 +1,15 @@
-define(['views/mainView'], 
-	function( MainView ){
+define([ 'marionette', 'views/mainView' ], 
+	function( Marionette, MainView ){
 		
 		return Marionette.AppRouter.extend({
 			
-			routes: {
+			appRoutes: {
 				"listMovies" : "showlistMovies",
-				//"listMovies/page/:page" : "showlistMovies",
 				"showMovieForm"	 : "showForm",
 				"delete/:id" : "deleteMovie",
 				"edit/:id"	 : "editMovie"	
 			},
 
-			controller: MainView,
-			
+			controller: MainView
 		});
 });

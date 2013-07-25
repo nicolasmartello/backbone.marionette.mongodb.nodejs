@@ -1,65 +1,37 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone',
+	'marionette',
 	'text!../templates/listsMovies.html',
-	'text!../templates/footerPagination.html'
-	], function($,_, Backbone, Template, PageTemplate){
+    'collections/movies'
+	], function($,_, Marionette, Template, CollectionMovies){
 		
-		var pagesCount = 3, currentPage;  
+        var listMovies = new CollectionMovies;  
 		
-		var MovieListView = Backbone.View.extend({
-			
-			render:function(){
+		var MovieListView = Marionette.ItemView.extend({
 
-	            this.TableMovie();
-				
-				//this.PageFooter();
+			render: function(){
+                var self = this;
+                listMovies.fetch({
+                                   
+                    success: function(){
+                        
+                        this.models = arguments[1];
 
-	            return this;
+                        var compiledTemplate = _.template( Template,{movies:this.models} );  
+                        
+                        self.$el.html(compiledTemplate);
+
+                    },
+                    error:function () {
+                        console.log(arguments);
+                    }
+                });
+	            
+                return this;
 
             },
-
-            TableMovie: function (){
-            	
-            	var compiledTemplate = _.template( Template );  
-				
-				this.$el.html(compiledTemplate({
-	                
-	                movies: this.items
-
-	            }));
-
-            },
-
-            PageFooter: function (){
-            	
-            	var fTemp = _.template( PageTemplate ); 
-
-            	var pages = Math.ceil( this.collectionMovies.length / pagesCount );
-
-            	var arr = [];
-
-                for( var i = 1 ; i <= pages ; i++ )
-                {
-                    
-                    if(i == currentPage )
-                        selectPage = "select";
-                    else
-                    	selectPage = "normal";
-                    
-                    arr.push({ pageNumber: i, class_page:selectPage });
-                }
-                
-                
-            	this.$el.find('tfoot td').html(
-            	
-            	 	fTemp({ listPages: arr })
-            	
-            	);
-
-            }
-
+        
 	});
 
 	return MovieListView;
